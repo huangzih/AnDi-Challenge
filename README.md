@@ -80,3 +80,7 @@ The methods for predicting anomalous exponents of 2D and 3D trajectories are bot
 * PyTorch==1.6.0
 * cuda==10.2
 * cuDNN==7.6.5
+
+### 7. References
+[1] G. Muñoz-Gil, G. Volpe, M. A. Garcia-March, R. Metzler, M. Lewenstein, and C. Manzo. [AnDi: The Anomalous Diffusion Challenge](https://arxiv.org/abs/2003.12036). arXiv: 2003.12036.
+[2] S. Bo, F. Schmidt, R. Eichhorn, and G. Volpe. [Measurement of Anomalous Diffusion Using Recurrent Neural Networks](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.100.010102). Phys. Rev. E 100, 010102(R) (2019).
