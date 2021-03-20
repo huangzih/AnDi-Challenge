@@ -1,10 +1,10 @@
 # HNU in AnDi Challenge
 
+Summary of our methods for task 1 (**inference of the anomalous diffusion exponent**) in AnDi Challenge.
+
 ## Zihan Huang
 
 *School of Physics and Electronics, Hunan University, Changsha, China*
-
-Summary of our methods for task 1 (inference of the anomalous diffusion exponent) in AnDi Challenge.
 
 ### Data Generation
 The file `generate_trajectory.py` is utilized to generate training data based on the module [`andi_datasets`](https://github.com/AnDiChallenge/ANDI_datasets):
@@ -17,8 +17,20 @@ The length of a trajectory provided by `andi-datasets` ranges from 10 to 999. To
 
 | Length | Number | Length | Number | Length | Number | Length | Number |
 |  :-:  | :-:   |  :-:  | :-:   | :-: | :-:  | :-:  | :-:  |
-| 10    |5000000 |
-| 15  | 5000000 |
+| 10    |5000000 | 105  |2000000 |
+| 15  | 5000000 | 110  |2000000 |
+| 20  | 5000000 | 115  |2000000 |
+| 25  | 5000000 | 120  |2000000 |
+| 30  | 5000000 | 125  |2000000 |
+| 40  | 5000000 | 150  |2000000 |
+| 45  | 5000000 | 175  |2000000 |
+| 50  | 5000000 | 200  |2000000 |
+| 55  | 5000000 | 225  |2000000 |
+| 60  | 5000000 | 250  |2000000 |
+| 70  | 5000000 |
+| 80  | 5000000 |
+| 90  | 5000000 |
+| 100  | 5000000 |
 
 ### System Environment
 * OS: Ubuntu 16.04
