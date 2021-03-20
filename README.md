@@ -52,6 +52,8 @@ class AnDiModel(nn.Module):
         out, state = self.lstm(x, (h0.detach(), c0.detach()))
         out = self.fc(out[:,-1,:])
         return out
+
+model = AnDiModel(1, 64, 3, 1)
 ```
 
 Models for each specific length are trained separately. 80% of training data is used for training, while the other is used for validation. We implement the LSTM-based model by PyTorch 1.6.0 on RTX 2080Ti. The model is trained by back propagation method with a batch size 512, where loss function is the mean squared error (MSE). The optimizer is Adam with a learning rate *l* = 0.001. The learning rate is changed as *l* -> *l*/5 if the valid loss doesn't decrease after 2 epochs. When the number of such changes exceeds 1, the training process is early stopped to save time and avoid overfitting. The best model for a specific length is determined by the mean absolute error (MAE) of validation set. We choose the epoch with the lowest valid MAE as the best model.
