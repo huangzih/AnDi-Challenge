@@ -60,9 +60,35 @@ Models for each specific length are trained separately. 80% of training data is 
 
 The codes for training are in the file `train_lstm.py`, where the usage is:
 ```
-python train_lstm.py --l 100 --f 0
+python train_lstm.py --l 300 --f 0
 ```
-`--l` denotes the specific length and `--f` denotes the fold ranging from 0 to 4.
+`--l` denotes the specific length and `--f` denotes the fold ranging from 0 to 4. An example of training process is as follow:
+
+```
+Epoch: 0	LR: 0.001000	Valid Loss: 0.0624	Valid MAE: 0.1907
+Epoch: 1	LR: 0.001000	Valid Loss: 0.0655	Valid MAE: 0.1979
+Epoch: 2	LR: 0.001000	Valid Loss: 0.0553	Valid MAE: 0.1751
+Epoch: 3	LR: 0.001000	Valid Loss: 0.0506	Valid MAE: 0.1675
+Epoch: 4	LR: 0.001000	Valid Loss: 0.0482	Valid MAE: 0.1566
+Epoch: 5	LR: 0.001000	Valid Loss: 0.0456	Valid MAE: 0.1534
+Epoch: 6	LR: 0.001000	Valid Loss: 0.0462	Valid MAE: 0.1559
+Epoch: 7	LR: 0.001000	Valid Loss: 0.0447	Valid MAE: 0.1524
+Epoch: 8	LR: 0.001000	Valid Loss: 0.0443	Valid MAE: 0.1495
+Epoch: 9	LR: 0.001000	Valid Loss: 0.0447	Valid MAE: 0.1521
+Epoch: 10	LR: 0.001000	Valid Loss: 0.0437	Valid MAE: 0.1486
+Epoch: 11	LR: 0.001000	Valid Loss: 0.0442	Valid MAE: 0.1481
+Epoch: 12	LR: 0.001000	Valid Loss: 0.0435	Valid MAE: 0.1481
+Epoch: 13	LR: 0.001000	Valid Loss: 0.0451	Valid MAE: 0.1501
+Epoch: 14	LR: 0.001000	Valid Loss: 0.0433	Valid MAE: 0.1482
+Epoch: 15	LR: 0.001000	Valid Loss: 0.0433	Valid MAE: 0.1486
+Epoch: 16	LR: 0.001000	Valid Loss: 0.0436	Valid MAE: 0.1489
+Epoch: 17	LR: 0.001000	Valid Loss: 0.0435	Valid MAE: 0.1477
+Epoch: 18	LR: 0.000200	Valid Loss: 0.0426	Valid MAE: 0.1447
+Epoch: 19	LR: 0.000200	Valid Loss: 0.0425	Valid MAE: 0.1461
+Epoch: 20	LR: 0.000200	Valid Loss: 0.0423	Valid MAE: 0.1453
+Epoch: 21	LR: 0.000200	Valid Loss: 0.0423	Valid MAE: 0.1458
+Epoch: 22	LR: 0.000200	Valid Loss: 0.0423	Valid MAE: 0.1448
+```
 
 ### 3. Inference
 We firstly normalize the challenge data for task 1 as the same with training data. After that, the predicted anomalous exponent of a trajectory is determined by the following rule:
