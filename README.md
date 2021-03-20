@@ -2,7 +2,9 @@
 
 Summary of our LSTM-based methods for task 1 (**inference of the anomalous diffusion exponent**) in AnDi Challenge.
 
-## Zihan Huang
+>**Note: ** The report of an improved version of our methods based on WaveNet is in progress.
+
+## [Zihan Huang](http://grjl.hnu.edu.cn/p/2020162)
 
 *School of Physics and Electronics, Hunan University, Changsha, China*
 
