@@ -35,7 +35,7 @@ The length of a trajectory provided by `andi-datasets` ranges from 10 to 999. To
 | 100  | 5000000 |||||950 |1000000 |
 
 ### 2. Model Training
-We use a **LSTM**-based RNN model for this task. For 1D trajectories, the input dimension is set as 1. The number of features in the hidden state is 64, and the number of recurrent LSTM layers is 3. A fully-connected layer with a dropout rate *p* = 0.2 and one output node is added at the end of model. For this regression task, no activation function is applied on the output layer. The pytorch version of our model is as follow:
+We use a **LSTM**-based RNN model for this task. For 1D trajectories, the input dimension is set as 1. The number of features in the hidden state is 64, and the number of recurrent LSTM layers is 3. A fully-connected layer with a dropout rate *p* = 0.2 and one output node is added at the end of model. For this regression task, no activation function is applied on the output layer. The PyTorch version of our model is as follow:
 
 ```python
 class AnDiModel(nn.Module):
@@ -72,7 +72,7 @@ To improve the model performance, K-Fold cross validation is utilized where *K* 
 
 On the other hand, we generate an external validation dataset containing 100000 1D trajectories where the lengths are uniformly distributed. We find that multiply the model outputs by 1.011 leads to a relatively lowest MAE on this validation dataset. Therefore, the predicted results for challenge data are also multiplied by 1.011. Finally, since the exponent is in [0.05,2], the final results are clipped to ensure reasonable predictions.
 
-The codes for inference and post-processing are in the file `inference-1d.py`. When running the code, make two folders `data` and `output`, then put the challenge data 'task1.txt' into folder 'data'. The result will be generated in `output`.
+The codes for inference and post-processing are in the file `inference-1d.py`. When running the code, make two folders `data` and `output`, then put the challenge data 'task1.txt' into folder 'data'. The result will be generated in folder `output`.
 
 ### 5. 2D & 3D Task
 The methods for predicting anomalous exponents of 2D and 3D trajectories are both based on models for 1D trajectories. We separate the dimensions of trajectories and treat the data of each dimension as 1D trajectories. Using the same method for 1D trajectories, we can get predicted exponents alpha_x, alpha_y, and alpha_z for *x*, *y*, and *z* dimensions respectively. The final results are alpha_2D = (alpha_x+alpha_y)/2 for 2D trajectories, and alpha_3D = (alpha_x+alpha_y+alpha_z)/3 for 3D trajectories.
