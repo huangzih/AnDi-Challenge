@@ -62,7 +62,7 @@ The codes for training are in the file `train_lstm.py`, where the usage is:
 ```
 python train_lstm.py --l 300 --f 0
 ```
-`--l` denotes the specific length and `--f` denotes the fold ranging from 0 to 4. An example of training process is as follow:
+`--l` denotes the specific length and `--f` denotes the fold ranging from 0 to 4. An example of the training process is shown as follow:
 
 ```
 Epoch: 0	LR: 0.001000	Valid Loss: 0.0624	Valid MAE: 0.1907
