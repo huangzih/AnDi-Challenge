@@ -6,7 +6,7 @@ Summary of our LSTM-based methods for task 1 (**inference of the anomalous diffu
 
 *School of Physics and Electronics, Hunan University, Changsha, China*
 
-### Data Generation
+### 1. Data Generation
 The file `generate_trajectory.py` is utilized to generate training data based on the module [`andi_datasets`](https://github.com/AnDiChallenge/ANDI_datasets):
 ```
 python generate_trajectory.py --l 200 --N 2000000
@@ -32,7 +32,7 @@ The length of a trajectory provided by `andi-datasets` ranges from 10 to 999. To
 | 90  | 5000000 |||||900 |1000000 |
 | 100  | 5000000 |||||950 |1000000 |
 
-### Model Training
+### 2. Model Training
 We use a **LSTM**-based RNN model for this task. For 1D trajectories, the input dimension is set as 1. The number of features in the hidden state is 64, and the number of recurrent LSTM layers is 3. A fully-connected layer with a dropout rate *p* = 0.2 and one output node is added at the end of model. For this regression task, no activation function is applied on the output layer. The pytorch version of our model is as follow:
 
 ```python
@@ -60,20 +60,20 @@ python train_lstm.py --l 100 --f 0
 ```
 `--l` denotes the specific length and `--f` denotes the fold ranging from 0 to 4.
 
-### Inference
+### 3. Inference
 We firstly normalize the challenge data for task 1 as the same with training data. After that, the predicted anomalous exponent of a trajectory is determined by the following rule:
 * If the original length of this trajectory belongs to 43 specific lengths, the trajectory data remains the same. The model output is exactly the predicted exponent of this trajectory.
 * Otherwise, a new length of this trajectory is set as **the closest smaller specific length** in the table. For instance, the new length of a trajectory with a length 49 should be 45. The trajectory data is subsequently transformed into 2 sequences. For clarity, we set the trajectory data as [x_1, x_2, ..., x_T] where T is the original length. We denote T_n as the new length. Note that T_n < T, the two sequences are [x_1, x_2, ..., x_{T_n}] and [x_{T-T_n+1}, x_{T-T_n+2}, ..., x_T] respectively. Such two sequences are both used for inference, with model outputs alpha_1 and alpha_2. The predicted exponent a of this trajectory is given by alpha=(alpha_1+alpha_2)/2.
 
-### K-Fold & Post-Processing
+### 4. K-Fold & Post-Processing
 To improve the model performance, K-Fold cross validation is utilized where *K* = 5 in this work. However, due to the time limit of this competition, we only calculate 3 folds. Therefore, totally 43 * 3 = 129 models are used for our final submission.
 
 On the other hand, we generate an external validation dataset containing 100000 1D trajectories where the lengths are uniformly distributed. We find that multiply the model outputs by 1.011 leads to a relatively lowest MAE on this validation dataset. Therefore, the predicted results for challenge data are also multiplied by 1.011. Finally, since the exponent is in [0.05,2], the final results are clipped to ensure reasonable predictions.
 
-### 2D & 3D Task
+### 5. 2D & 3D Task
 The methods for predicting anomalous exponents of 2D and 3D trajectories are both based on models for 1D trajectories. We separate the dimensions of trajectories and treat the data of each dimension as 1D trajectories. Using the same method for 1D trajectories, we can get predicted exponents alpha_x, alpha_y, and alpha_z for *x*, *y*, and *z* dimensions respectively. The final results are alpha_2D = (alpha_x+alpha_y)/2 for 2D trajectories, and alpha_3D = (alpha_x+alpha_y+alpha_z)/3 for 3D trajectories.
 
-### System Environment
+### 6. System Environment
 * OS: Ubuntu 16.04
 * GPU: RTX 2080Ti
 * Python==3.7.4
