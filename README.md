@@ -11,7 +11,7 @@ Summary of our LSTM-based methods for task 1 (**inference of the anomalous diffu
 ### 1. Data Generation
 The file `generate_trajectory.py` is utilized to generate training data based on the module [`andi_datasets`](https://github.com/AnDiChallenge/ANDI_datasets):
 ```
-python generate_trajectory.py --l 200 --N 2000000
+python generate_trajectory.py --l 300 --N 1500000
 ```
 where `--l` denotes the length of trajectory and `--N` denotes the number of trajectories.
 
