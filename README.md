@@ -35,7 +35,7 @@ The length of a trajectory provided by `andi-datasets` ranges from 10 to 999. To
 | 100  | 5000000 |||||950 |1000000 |
 
 ### 2. Model Training
-We use a **LSTM**-based RNN model for this task. For 1D trajectories, the input dimension is set as 1. The number of features in the hidden state is 64, and the number of recurrent LSTM layers is 3. A fully-connected layer with a dropout rate *p* = 0.2 and one output node is added at the end of model. For this regression task, no activation function is applied on the output layer. The PyTorch version of our model is as follow:
+We use an **LSTM**-based RNN model for this task. For 1D trajectories, the input dimension is set as 1. The number of features in the hidden state is 64, and the number of recurrent LSTM layers is 3. A fully-connected layer with a dropout rate *p* = 0.2 and one output node is added at the end of model. For this regression task, no activation function is applied on the output layer. The PyTorch version of our model is as follow:
 
 ```python
 class AnDiModel(nn.Module):
