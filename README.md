@@ -6,7 +6,7 @@ Summary of our LSTM-based methods for task 1 (**inference of the anomalous diffu
 
 ## [Zihan Huang](http://grjl.hnu.edu.cn/p/2020162)
 
-*School of Physics and Electronics, Hunan University, Changsha, China*
+*School of Physics and Electronics, Hunan University, Changsha 410082, China*
 
 ### 1. Data Generation
 The file `generate_trajectory.py` is utilized to generate training data based on the module [`andi_datasets`](https://github.com/AnDiChallenge/ANDI_datasets):
