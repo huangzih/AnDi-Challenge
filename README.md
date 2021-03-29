@@ -38,7 +38,7 @@ The length of a trajectory provided by `andi-datasets` ranges from 10 to 999. To
 We use an **LSTM**-based RNN model for this task. For 1D trajectories, the input dimension is set as 1. The number of features in the hidden state is 64, and the number of recurrent LSTM layers is 3. A fully-connected layer with a dropout rate *p* = 0.2 and one output node is added at the end of model. For this regression task, no activation function is applied on the output layer. The PyTorch version of our model is as follow:
 
 ```python
-class AnDiModel(nn.Module):
+class Model(nn.Module):
     def __init__(self, input_dim, hidden_dim, layer_dim, output_dim):
         super().__init__()
         self.hidden_dim = hidden_dim
@@ -53,7 +53,7 @@ class AnDiModel(nn.Module):
         out = self.fc(out[:,-1,:])
         return out
 
-model = AnDiModel(1, 64, 3, 1)
+model = Model(1, 64, 3, 1)
 ```
 
 Models for each specific length are trained separately. 80% of training data is used for training, while the other is used for validation. We implement the LSTM-based model by PyTorch 1.6.0 on RTX 2080Ti. The model is trained by back propagation method with a batch size 512, where loss function is the mean squared error (MSE). The optimizer is Adam with a learning rate *l* = 0.001. The learning rate is changed as *l* -> *l*/5 if the valid loss doesn't decrease after 2 epochs. When the number of such changes exceeds 1, the training process is early stopped to save time and avoid overfitting. The best model for a specific length is determined by the mean absolute error (MAE) of validation set. We choose the epoch with the lowest valid MAE as the best model.
